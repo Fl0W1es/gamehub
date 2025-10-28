@@ -295,20 +295,28 @@ class GameCarousel {
 
     updateCarousel() {
         if (this.isAnimating) return;
-        
+
         this.isAnimating = true;
         this.updateSlidesToShow();
-        
-        const slideWidth = this.slides[0].offsetWidth + 32;
-        // Смещение с учетом клонов (начинаем со второго набора игр)
-        const offset = this.games.length + this.currentIndex;
-        const translateX = -offset * slideWidth;
-        
+
+        let translateX;
+
+        if (window.innerWidth <= 480) {
+            // Mobile zoom-like layout - center active slide
+            const slideWidth = 280 + 30; // 280px slide + 30px margin
+            translateX = -(this.currentIndex * slideWidth) + (window.innerWidth - 280) / 2;
+        } else {
+            // Desktop layout with clones
+            const slideWidth = this.slides[0].offsetWidth + 32;
+            const offset = this.games.length + this.currentIndex;
+            translateX = -offset * slideWidth;
+        }
+
         this.carouselTrack.style.transition = `transform ${this.animationDuration}ms ease-in-out`;
         this.carouselTrack.style.transform = `translateX(${translateX}px)`;
-        
+
         this.updateActiveStates();
-        
+
         setTimeout(() => {
             this.showGameDetails();
             this.isAnimating = false;
@@ -448,20 +456,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Navigation scroll highlighting and page-based active states
+    // Navigation active states - improved
     const navLinks = document.querySelectorAll('.nav a');
     const sections = document.querySelectorAll('section[id]');
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPath = window.location.pathname;
 
     function updateActiveNav() {
-        const scrollY = window.scrollY + 150;
-
-        // First, reset all active states
+        // Reset all active states
         navLinks.forEach(link => link.classList.remove('active'));
 
-        // Page-based active states
-        if (currentPage === 'index.html' || currentPage === '') {
-            // On index page, use scroll highlighting
+        // Check current page and set active link
+        if (currentPath.includes('news.html')) {
+            // On news page
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === 'news.html') {
+                    link.classList.add('active');
+                }
+            });
+        } else if (currentPath.includes('reviews.html')) {
+            // On reviews page
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === 'reviews.html') {
+                    link.classList.add('active');
+                }
+            });
+        } else {
+            // On index page - use scroll highlighting
+            const scrollY = window.scrollY + 150;
+
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.offsetHeight;
@@ -475,35 +497,32 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
             });
-        } else if (currentPage === 'news.html') {
-            // On news page
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === 'news.html') {
-                    link.classList.add('active');
-                }
-            });
-        } else if (currentPage === 'reviews.html') {
-            // On reviews page
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === 'reviews.html') {
-                    link.classList.add('active');
-                }
-            });
-        }
 
-        // Fallback - highlight "Главная" if nothing else is active
-        const hasActive = Array.from(navLinks).some(link => link.classList.contains('active'));
-        if (!hasActive) {
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === 'index.html' || link.getAttribute('href') === '#home') {
-                    link.classList.add('active');
-                }
-            });
+            // Fallback to "Главная" if no section is active
+            const hasActiveSection = Array.from(navLinks).some(link =>
+                link.classList.contains('active') && link.getAttribute('href')?.startsWith('#')
+            );
+
+            if (!hasActiveSection) {
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === 'index.html' || link.getAttribute('href') === '#home') {
+                        link.classList.add('active');
+                    }
+                });
+            }
         }
     }
 
+    // Force initial check
+    setTimeout(() => {
+        updateActiveNav();
+    }, 100);
+
     window.addEventListener('scroll', updateActiveNav);
-    updateActiveNav(); // Initial check
+    window.addEventListener('load', updateActiveNav);
+
+    // Also update on hash changes
+    window.addEventListener('hashchange', updateActiveNav);
 
     // Mobile optimization - disable cursor controls on touch devices
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
