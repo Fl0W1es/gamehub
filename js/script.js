@@ -474,6 +474,77 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', updateActiveNav);
     updateActiveNav(); // Initial check
 
+    // Mobile optimization - disable cursor controls on touch devices
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+        document.body.classList.add('touch-device');
+        document.querySelector('.cursor-controls')?.remove();
+    }
+
+    // Enhanced carousel for touch devices
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let isScrolling = false;
+
+    function carouselTouchStart(e) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        isScrolling = false;
+    }
+
+    function carouselTouchMove(e) {
+        if (!touchStartX || !touchStartY) return;
+
+        const touchEndX = e.touches[0].clientX;
+        const touchEndY = e.touches[0].clientY;
+        const deltaX = Math.abs(touchEndX - touchStartX);
+        const deltaY = Math.abs(touchEndY - touchStartY);
+
+        if (deltaY > deltaX && deltaY > 10) {
+            isScrolling = true;
+        }
+    }
+
+    function carouselTouchEnd(e) {
+        if (isScrolling) return;
+
+        const touchEndX = e.changedTouches[0].clientX;
+        const deltaX = touchStartX - touchEndX;
+
+        if (Math.abs(deltaX) > 50) {
+            if (deltaX > 0) {
+                // Swipe left - next slide
+                if (!gameCarousel.isAnimating) {
+                    gameCarousel.nextSlide();
+                }
+            } else {
+                // Swipe right - prev slide
+                if (!gameCarousel.isAnimating) {
+                    gameCarousel.prevSlide();
+                }
+            }
+        }
+
+        touchStartX = 0;
+        touchStartY = 0;
+    }
+
+    // Add touch events to carousel
+    const carousel = document.querySelector('.carousel');
+    if (carousel) {
+        carousel.addEventListener('touchstart', carouselTouchStart, { passive: true });
+        carousel.addEventListener('touchmove', carouselTouchMove, { passive: true });
+        carousel.addEventListener('touchend', carouselTouchEnd, { passive: true });
+    }
+
+    // Mobile carousel acceleration
+    if (window.innerWidth < 768) {
+        // Reduce transition duration on mobile for faster feel
+        const carouselTrack = document.querySelector('.carousel-track');
+        if (carouselTrack) {
+            carouselTrack.style.transition = 'transform 400ms ease-out';
+        }
+    }
+
     // Expandable news and review cards - click on entire card
     const newsCards = document.querySelectorAll('.news-card');
     const reviewCards = document.querySelectorAll('.review-card');
