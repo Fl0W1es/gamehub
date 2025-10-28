@@ -448,27 +448,58 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Navigation scroll highlighting
+    // Navigation scroll highlighting and page-based active states
     const navLinks = document.querySelectorAll('.nav a');
     const sections = document.querySelectorAll('section[id]');
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
     function updateActiveNav() {
         const scrollY = window.scrollY + 150;
 
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
+        // First, reset all active states
+        navLinks.forEach(link => link.classList.remove('active'));
 
-            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
+        // Page-based active states
+        if (currentPage === 'index.html' || currentPage === '') {
+            // On index page, use scroll highlighting
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        } else if (currentPage === 'news.html') {
+            // On news page
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === 'news.html') {
+                    link.classList.add('active');
+                }
+            });
+        } else if (currentPage === 'reviews.html') {
+            // On reviews page
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === 'reviews.html') {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Fallback - highlight "Главная" if nothing else is active
+        const hasActive = Array.from(navLinks).some(link => link.classList.contains('active'));
+        if (!hasActive) {
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === 'index.html' || link.getAttribute('href') === '#home') {
+                    link.classList.add('active');
+                }
+            });
+        }
     }
 
     window.addEventListener('scroll', updateActiveNav);
