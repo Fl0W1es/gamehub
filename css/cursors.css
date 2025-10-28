@@ -153,7 +153,13 @@ body.glove-cursor .carousel-slide {
 
     /* Reset any broken positions */
     .nav a::after {
-        transform-origin: 50% 100%;
+        transform-origin: 50% 100% !important;
+        bottom: -2px !important;
+    }
+
+    /* Force underline position reset */
+    .header .nav ul {
+        position: relative;
     }
 }
 
@@ -167,6 +173,31 @@ body.glove-cursor .carousel-slide {
     body.sword-cursor,
     body.glove-cursor {
         cursor: crosshair !important;
+    }
+
+    /* Fix navigation underline positioning at 500% zoom */
+    .nav a::after {
+        display: none !important; /* Временно отключаем анимацию при 500% zoom */
+    }
+
+    .nav a.active {
+        border-bottom: 2px solid #d946ef !important; /* Вместо ::after используем простой border */
+        padding-bottom: 5px !important;
+    }
+
+    .nav a:hover {
+        border-bottom: 2px solid rgba(217, 70, 239, 0.7) !important;
+    }
+
+    /* Force fixed positioning for all elements */
+    .header .nav ul li a {
+        position: relative !important;
+    }
+
+    /* Disable all transforms at ultrazoom */
+    .cursor-btn, .carousel-btn, .nav a, button, .carousel-slide, * {
+        transform: none !important;
+        transform-origin: unset !important;
     }
 }
 
