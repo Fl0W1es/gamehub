@@ -505,7 +505,7 @@ body {
         text-align: center;
     }
 
-    /* Beautiful mobile carousel */
+    /* Better mobile carousel - no overlapping */
     .carousel-section {
         width: 100%;
         max-width: 95vw;
@@ -515,7 +515,7 @@ body {
     .carousel-container {
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.3rem;
         width: 100%;
     }
 
@@ -529,53 +529,54 @@ body {
         position: relative;
     }
 
-    /* Center carousel slides perfectly */
+    /* Center carousel slides - hide next slide */
     .carousel-track {
         display: flex;
         align-items: center;
-        height: 220px;
+        height: 200px; /* Reduced height */
     }
 
     .carousel-slide {
-        min-width: calc(100vw - 80px); /* Take almost full width */
-        max-width: calc(100vw - 80px);
-        margin: 0 10px;
+        min-width: calc(85vw - 40px); /* Smaller - leave room for arrows */
+        max-width: calc(85vw - 40px);
+        margin: 0 5px; /* Smaller margin to prevent overlap */
         border-radius: 12px;
         overflow: hidden;
         transition: all 0.4s ease;
         touch-action: pan-x;
-        border: 2px solid transparent;
+        border: none; /* Remove border for cleaner look */
     }
 
-    .carousel-slide:hover,
     .carousel-slide.active {
-        border-color: rgba(139, 92, 246, 0.6);
-        box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+        border: 2px solid rgba(139, 92, 246, 0.8);
+        box-shadow: 0 5px 20px rgba(139, 92, 246, 0.6);
     }
 
-    /* Better game images for mobile */
+    /* Clean game images for mobile */
     .game-image {
         width: 100%;
-        height: 140px;
+        height: 130px;
         object-fit: cover;
     }
 
     .game-info {
-        padding: 0.8rem;
+        padding: 0.7rem;
         text-align: center;
+        background: rgba(0, 0, 0, 0.3); /* Subtle background */
+        border-radius: 0 0 10px 10px;
     }
 
     .game-title {
-        font-size: 1.1rem;
-        margin-bottom: 0.4rem;
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
         color: #d946ef;
         font-weight: 600;
     }
 
     .game-description {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         color: #cbd5e1;
-        line-height: 1.3;
+        line-height: 1.2;
     }
 
     /* Bigger carousel buttons for mobile */
@@ -687,8 +688,7 @@ body {
     .review-summary {
         font-size: 0.9rem;
         line-height: 1.6;
-        text-align: justify;
-        text-justify: inter-word;
+        text-align: left;
         margin-bottom: 0.8rem;
     }
 
