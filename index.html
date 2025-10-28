@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameHub - Мир видеоигр</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cursors.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="joystick-icon">
+                    <!-- Ваш джойстик -->
+                    <img src="images/joystick.png" alt="Joystick" class="joystick">
+                </div>
+                <h1 class="logo">GameHub</h1>
+            </div>
+            
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#games">Игры</a></li>
+                    <li><a href="news.html">Новости</a></li>
+                    <li><a href="reviews.html">Обзоры</a></li>
+                </ul>
+            </nav>
+
+            <div class="cursor-controls">
+                <button class="cursor-btn active" data-cursor="default">⚪ Стандарт</button>
+                <button class="cursor-btn" data-cursor="crosshair">🎯 Прицел</button>
+                <button class="cursor-btn" data-cursor="glove">🧤 Перчатка</button>
+                <button class="cursor-btn" data-cursor="sword">⚔️ Меч</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <section id="home" class="hero">
+            <h2 class="hero-title">Добро пожаловать в мир видеоигр</h2>
+            <p class="hero-subtitle">Открой для себя лучшие игры всех времен</p>
+        </section>
+
+        <!-- Games Carousel -->
+        <section id="games" class="carousel-section">
+            <h3 class="section-title">Популярные игры</h3>
+            
+            <div class="carousel-container">
+                <button class="carousel-btn prev-btn">‹</button>
+                
+                <div class="carousel">
+                    <div class="carousel-track">
+                        <!-- Карточки будут добавлены через JS -->
+                    </div>
+                </div>
+                
+                <button class="carousel-btn next-btn">›</button>
+            </div>
+            
+            <div class="carousel-dots">
+                <!-- Точки будут добавлены через JS -->
+            </div>
+
+            <!-- Блок с дополнительной информацией -->
+            <div class="game-details">
+                <div class="game-info-content">
+                    <h3 class="selected-game-title">Выберите игру для просмотра деталей</h3>
+                    <p class="selected-game-description">Наведите на карточку игры или используйте стрелки для навигации</p>
+                </div>
+                <div class="game-video-container">
+                    <div class="video-placeholder">
+                        <p>Видео появится здесь при выборе игры</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>GameHub</h4>
+                <p>Мир видеоигр в вашем кармане</p>
+            </div>
+            <div class="footer-section">
+                <h4>Разработчик</h4>
+                <p>Насиров Мурад</p>
+                <p>Все права защищены &copy; 2025</p>
+            </div>
+            <div class="footer-section">
+                <h4>Контакты</h4>
+                <p>Email: info@gamehub.com</p>
+                <p>Телефон: +7 (495) 123-45-67</p>
+                <p>Facebook: @GameHubOfficial</p>
+                <p>Instagram: @gamehub_ru</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
