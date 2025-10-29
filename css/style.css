@@ -541,7 +541,7 @@ body {
         height: 200px;
         border-radius: 12px;
         overflow: hidden;
-        margin: 10px;
+        margin: 0;
         transition: all 0.3s ease;
         border: 2px solid transparent;
     }

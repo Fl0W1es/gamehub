@@ -180,11 +180,17 @@ class GameCarousel {
             this.slides.push(slide);
         });
 
-        // Начинаем с середины (второй набор игр)
+        // Начинаем с первой игры
         this.currentIndex = 0;
-        const initialOffset = this.games.length;
-        const slideWidth = this.slides[0].offsetWidth + 32;
-        this.carouselTrack.style.transform = `translateX(-${initialOffset * slideWidth}px)`;
+        if (window.innerWidth > 480) {
+            // Desktop: start with clones in middle
+            const initialOffset = this.games.length;
+            const slideWidth = this.slides[0].offsetWidth + 32;
+            this.carouselTrack.style.transform = `translateX(-${initialOffset * slideWidth}px)`;
+        } else {
+            // Mobile: start at beginning
+            this.carouselTrack.style.transform = 'translateX(0)';
+        }
         this.carouselTrack.style.transition = 'none';
     }
 
@@ -301,15 +307,15 @@ class GameCarousel {
 
         let translateX;
 
-        if (window.innerWidth <= 480) {
-            // Mobile zoom-like layout - center active slide
-            const slideWidth = 280 + 30; // 280px slide + 30px margin
-            translateX = -(this.currentIndex * slideWidth) + (window.innerWidth - 280) / 2;
-        } else {
+        const carousel = document.querySelector('.carousel');
+        const slideWidth = this.slides[0].offsetWidth + (window.innerWidth > 480 ? 32 : 0);
+        if (window.innerWidth > 480) {
             // Desktop layout with clones
-            const slideWidth = this.slides[0].offsetWidth + 32;
             const offset = this.games.length + this.currentIndex;
             translateX = -offset * slideWidth;
+        } else {
+            // Mobile full-width slides
+            translateX = -this.currentIndex * carousel.offsetWidth;
         }
 
         this.carouselTrack.style.transition = `transform ${this.animationDuration}ms ease-in-out`;
