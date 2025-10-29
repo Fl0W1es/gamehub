@@ -489,7 +489,7 @@ body {
     /* Center all section content */
     .hero {
         margin-bottom: 2rem;
-        padding-top: 1rem;
+        padding-top: 2rem;
         text-align: center;
         width: 100%;
         max-width: 90vw;
@@ -557,6 +557,7 @@ body {
         width: 100%;
         height: 180px;
         object-fit: cover;
+        margin-top: 10px;
     }
 
     .game-info {
