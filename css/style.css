@@ -489,6 +489,7 @@ body {
     /* Center all section content */
     .hero {
         margin-bottom: 2rem;
+        padding-top: 1rem;
         text-align: center;
         width: 100%;
         max-width: 90vw;
