@@ -469,35 +469,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         } else {
-            // On index page - use scroll highlighting
-            const scrollY = window.scrollY + 150;
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                const sectionId = section.getAttribute('id');
-
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                    navLinks.forEach(link => {
-                        if (link.getAttribute('href') === `#${sectionId}`) {
-                            link.classList.add('active');
-                        }
-                    });
+            // On index page - always highlight "Главная"
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === 'index.html' || link.getAttribute('href') === '#home') {
+                    link.classList.add('active');
                 }
             });
-
-            // Fallback to "Главная" if no section is active
-            const hasActiveSection = Array.from(navLinks).some(link =>
-                link.classList.contains('active') && link.getAttribute('href')?.startsWith('#')
-            );
-
-            if (!hasActiveSection) {
-                navLinks.forEach(link => {
-                    if (link.getAttribute('href') === 'index.html' || link.getAttribute('href') === '#home') {
-                        link.classList.add('active');
-                    }
-                });
-            }
         }
     }
 
