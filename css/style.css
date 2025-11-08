@@ -970,6 +970,23 @@ body {
     margin: 0.5rem 0;
 }
 
+.game-review {
+    margin: 1rem 0;
+    padding: 1rem;
+    background: rgba(139, 92, 246, 0.1);
+    border-left: 4px solid #8b5cf6;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    color: #cbd5e1;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.game-review strong {
+    color: #d946ef;
+    font-weight: bold;
+}
+
 /* Game Features */
 .game-features {
     padding: 1.5rem;
@@ -1564,6 +1581,60 @@ footer {
 
 /* Force GitHub Pages cache refresh */
 
+/* Contacts Section */
+.contacts-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(30, 30, 50, 0.6), rgba(45, 45, 70, 0.4));
+    border-radius: 25px;
+    margin-top: 2rem;
+    border: none;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.contacts-content {
+    max-width: 600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.contact-info, .developer-info {
+    background: linear-gradient(135deg, rgba(45, 45, 70, 0.4), rgba(60, 60, 90, 0.3));
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.contact-info:hover, .developer-info:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+    border-color: #8b5cf6;
+}
+
+.contact-info h4, .developer-info h4 {
+    color: #d946ef;
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 15px rgba(217, 70, 239, 0.6);
+}
+
+.contact-info p, .developer-info p {
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+}
+
+.contact-info p:last-child, .developer-info p:last-child {
+    margin-bottom: 0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .header-content {
@@ -1581,5 +1652,14 @@ footer {
 
     .carousel-slide {
         min-width: 250px;
+    }
+
+    .contacts-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .contact-info, .developer-info {
+        padding: 1.5rem;
     }
 }

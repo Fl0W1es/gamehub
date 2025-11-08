@@ -13,8 +13,8 @@
         } else if (currentPath.includes('reviews.html')) {
             document.querySelectorAll('.nav a[href="reviews.html"]').forEach(link => link.classList.add('active'));
         } else {
-            // Index or home
-            document.querySelectorAll('.nav a[href="index.html"], .nav a[href="#home"]').forEach(link => link.classList.add('active'));
+            // Index or home/contacts
+            document.querySelectorAll('.nav a[href="index.html"], .nav a[href="#home"], .nav a[href="#contacts"]').forEach(link => link.classList.add('active'));
         }
     }
 
