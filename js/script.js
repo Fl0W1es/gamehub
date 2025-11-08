@@ -583,59 +583,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Modal for news and reviews
+    // Expandable news and review cards - click on entire card
     const newsCards = document.querySelectorAll('.news-card');
     const reviewCards = document.querySelectorAll('.review-card');
-    const newsModal = document.getElementById('news-modal');
-    const closeBtn = document.querySelector('.close-btn');
 
     newsCards.forEach(card => {
         card.addEventListener('click', (e) => {
-            openNewsModal(card);
+            expandCard(card);
         });
     });
 
     reviewCards.forEach(card => {
         card.addEventListener('click', (e) => {
-            expandReviewCard(card); // Keep expand for reviews if needed
+            expandCard(card);
         });
     });
 
-    function openNewsModal(card) {
-        const title = card.querySelector('.news-title').textContent;
-        const date = card.querySelector('.news-date').textContent;
-        const summary = card.querySelector('.news-summary').textContent;
-        const fullContent = card.querySelector('.news-full-content');
-
-        const modalBody = document.querySelector('.modal-body');
-        modalBody.innerHTML = `
-            <h2>${title}</h2>
-            <p class="modal-date">${date}</p>
-            <p>${summary}</p>
-            ${fullContent.innerHTML}
-        `;
-
-        newsModal.style.display = 'block';
-    }
-
-    if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-            newsModal.style.display = 'none';
-        });
-    }
-
-    window.addEventListener('click', (e) => {
-        if (e.target == newsModal) {
-            newsModal.style.display = 'none';
-        }
-    });
-
-    function expandReviewCard(card) {
+    function expandCard(card) {
         if (card.classList.contains('expanded')) {
             // Collapse - спрятать полный контент
             const fullContent = card.querySelector('.news-full-content, .review-full-content');
             if (fullContent) {
                 fullContent.classList.remove('visible');
+                // fullContent.style.display = 'none';
             }
             card.style.height = '';
             card.classList.remove('expanded');
@@ -644,6 +614,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const fullContent = card.querySelector('.news-full-content, .review-full-content');
             if (fullContent) {
                 fullContent.classList.add('visible');
+                // fullContent.style.display = 'block';
             }
             card.style.height = 'auto';
             card.classList.add('expanded');
