@@ -1,35 +1,24 @@
 // Navigation active states
-document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.nav a');
-    const currentPath = window.location.pathname;
+(function() {
+    function updateNavActiveState() {
+        const navLinks = document.querySelectorAll('.nav a');
+        const currentPath = window.location.pathname;
 
-    function updateActiveNav() {
         // Reset all active states
         navLinks.forEach(link => link.classList.remove('active'));
 
-        // Check current page and set active link
+        // Set active based on current path
         if (currentPath.includes('news.html')) {
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === 'news.html') {
-                    link.classList.add('active');
-                }
-            });
+            document.querySelectorAll('.nav a[href="news.html"]').forEach(link => link.classList.add('active'));
         } else if (currentPath.includes('reviews.html')) {
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === 'reviews.html') {
-                    link.classList.add('active');
-                }
-            });
+            document.querySelectorAll('.nav a[href="reviews.html"]').forEach(link => link.classList.add('active'));
         } else {
-            // On index page - always highlight "Главная"
-            navLinks.forEach(link => {
-                if (link.getAttribute('href') === 'index.html' || link.getAttribute('href') === '#home') {
-                    link.classList.add('active');
-                }
-            });
+            // Index or home
+            document.querySelectorAll('.nav a[href="index.html"], .nav a[href="#home"]').forEach(link => link.classList.add('active'));
         }
     }
 
-    // Force initial check
-    updateActiveNav();
-});
+    // Run immediately and on DOM load
+    updateNavActiveState();
+    document.addEventListener('DOMContentLoaded', updateNavActiveState);
+})();
