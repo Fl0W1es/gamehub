@@ -144,7 +144,6 @@ class GameCarousel {
         this.createDots();
         this.setupEventListeners();
         this.updateCarousel();
-        this.setupCursorControls();
         this.createProgressBar();
         this.autoPlay();
     }
@@ -254,20 +253,7 @@ class GameCarousel {
         });
     }
 
-    setupCursorControls() {
-        const cursorButtons = document.querySelectorAll('.cursor-btn');
-        cursorButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                cursorButtons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                document.body.classList.remove('crosshair-cursor', 'sword-cursor', 'glove-cursor');
-                const cursorType = btn.getAttribute('data-cursor');
-                if (cursorType !== 'default') {
-                    document.body.classList.add(`${cursorType}-cursor`);
-                }
-            });
-        });
-    }
+    // Cursor controls removed as per requirements
 
     updateSlidesToShow() {
         if (window.innerWidth < 768) {
@@ -601,23 +587,54 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Expandable news and review cards - click on entire card
+    // Modal for news and reviews
     const newsCards = document.querySelectorAll('.news-card');
     const reviewCards = document.querySelectorAll('.review-card');
+    const newsModal = document.getElementById('news-modal');
+    const closeBtn = document.querySelector('.close-btn');
 
     newsCards.forEach(card => {
         card.addEventListener('click', (e) => {
-            expandCard(card);
+            openNewsModal(card);
         });
     });
 
     reviewCards.forEach(card => {
         card.addEventListener('click', (e) => {
-            expandCard(card);
+            expandReviewCard(card); // Keep expand for reviews if needed
         });
     });
 
-    function expandCard(card) {
+    function openNewsModal(card) {
+        const title = card.querySelector('.news-title').textContent;
+        const date = card.querySelector('.news-date').textContent;
+        const summary = card.querySelector('.news-summary').textContent;
+        const fullContent = card.querySelector('.news-full-content');
+
+        const modalBody = document.querySelector('.modal-body');
+        modalBody.innerHTML = `
+            <h2>${title}</h2>
+            <p class="modal-date">${date}</p>
+            <p>${summary}</p>
+            ${fullContent.innerHTML}
+        `;
+
+        newsModal.style.display = 'block';
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            newsModal.style.display = 'none';
+        });
+    }
+
+    window.addEventListener('click', (e) => {
+        if (e.target == newsModal) {
+            newsModal.style.display = 'none';
+        }
+    });
+
+    function expandReviewCard(card) {
         if (card.classList.contains('expanded')) {
             // Collapse - спрятать полный контент
             const fullContent = card.querySelector('.news-full-content, .review-full-content');
