@@ -2,189 +2,114 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="description" content="Новости мира видеоигр. Анонсы, обновления, трейлеры.">
-    <meta name="theme-color" content="#0c0c1d">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Новости - GameHub</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-content">
-            <div class="logo-section">
-                <div class="joystick-icon">
-                    <a href="index.html">
-                        <img src="images/joystick.png" alt="Joystick" class="joystick">
-                    </a>
-                </div>
-                <a href="index.html" class="logo-link">
-                    <h1 class="logo">GameHub</h1>
-                </a>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>GameHub</h1>
             </div>
-
-            <nav class="nav">
-                <ul>
-                    <li><a href="index.html">Главная</a></li>
-                    <li><a href="news.html">Новости</a></li>
-                    <li><a href="reviews.html">Обзоры</a></li>
-                </ul>
-            </nav>
-        </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="reviews.html">Обзоры</a></li>
+                <li><a href="profile.html">Профиль</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Main Content -->
-    <main class="main">
-        <section class="hero">
-            <h2 class="hero-title">Новости мира игр</h2>
-            <p class="hero-subtitle">Последние обновления и анонсы из индустрии</p>
-        </section>
+    <main>
+        <section class="news-section">
+            <h2>Последние новости игрового мира</h2>
+            
+            <div class="news-card" onclick="toggleNews(this)">
+                <div class="news-preview">
+                    <h3>Выход новой игры Cyberpunk 2077: Phantom Liberty</h3>
+                    <p>Долгожданное дополнение для Cyberpunk 2077 наконец-то вышло и приносит с собой множество новых возможностей...</p>
+                </div>
+                <div class="news-full">
+                    <p>Долгожданное дополнение для Cyberpunk 2077 наконец-то вышло и приносит с собой множество новых возможностей, персонажей и локаций. Игроки могут исследовать новый район Найт-Сити и познакомиться с историей Соломона Рида.</p>
+                    <p>Дополнение включает в себя:</p>
+                    <ul>
+                        <li>Новый сюжет на 20+ часов</li>
+                        <li>Улучшенную систему прокачки</li>
+                        <li>Новые виды оружия и транспорта</li>
+                        <li>Улучшенную графику и производительность</li>
+                    </ul>
+                    <p>Реакция сообщества в целом положительная, многие отмечают значительное улучшение игрового процесса по сравнению с оригинальным релизом.</p>
+                </div>
+                <button class="expand-btn">Читать далее...</button>
+            </div>
 
-        <!-- News Articles -->
-        <section class="news-articles">
-            <div class="news-grid">
-                <article class="news-card">
-                    <img src="images/game1.jpg" alt="News 1" class="news-image">
-                    <div class="news-content">
-                        <h3 class="news-title">Cyberpunk 2077 получил новый DLC "Neon Shadows"</h3>
-                        <p class="news-date">25 октября 2025</p>
-                        <p class="news-summary">CD Projekt RED наконец возвращается к своему культовому проекту. Новое дополнение обещает перевернуть мир Нейт-Сити с ног на голову: 100+ часов нового контента, совершенно новая сюжетная кампания, альтернативные концовки, подземный город и множество сюжетных поворотов.</p>
-                        <div class="news-full-content" style="display: none;">
-                            <p>Это то, о чем мечтали фанаты после анонсов бесконечных DLC для Dragon's Dogma 2. Расширение добавит совершенно новую сюжетную кампанию, альтернативную концовку основной игры и более 100 часов нового геймплея. Игроки смогут исследовать подземный Нейт-Сити, узнать секреты корпораций и присоединиться к новой фракции хакеров.</p>
-                            <p>В DLC обещано:</p>
-                            <ul>
-                                <li>Новые задания и квесты</li>
-                                <li>Расширенная система модификации тела</li>
-                                <li>Новые виды транспорта и гаджетов</li>
-                                <li>Множество альтернативных концовок</li>
-                            </ul>
-                            <p>Дата выхода - весна 2026 года. Стоимость будет объявлена позже.</p>
-                        </div>
-                    </div>
-                </article>
+            <div class="news-card" onclick="toggleNews(this)">
+                <div class="news-preview">
+                    <h3>Анонс PlayStation 5 Pro</h3>
+                    <p>Sony официально анонсировала PlayStation 5 Pro с улучшенными характеристиками, которая обещает поддержку 8K разрешения...</p>
+                </div>
+                <div class="news-full">
+                    <p>Sony официально анонсировала PlayStation 5 Pro с улучшенными характеристиками, которая обещает поддержку 8K разрешения и повышенную производительность для игр с трассировкой лучей.</p>
+                    <p>Основные характеристики:</p>
+                    <ul>
+                        <li>Улучшенный процессор AMD Zen 2</li>
+                        <li>Мощный GPU для поддержки 8K</li>
+                        <li>Увеличенный объем быстрой памяти</li>
+                        <li>Поддержка технологии AMD FidelityFX Super Resolution</li>
+                    </ul>
+                    <p>Ожидается, что новая консоль выйдет в конце следующего года и станет отличным выбором для геймеров, желающих получить максимальное качество изображения.</p>
+                </div>
+                <button class="expand-btn">Читать далее...</button>
+            </div>
 
-                <article class="news-card">
-                    <img src="images/game3.jpg" alt="News 2" class="news-image">
-                    <div class="news-content">
-                        <h3 class="news-title">Elden Ring: shadow of the Erdtree превзошел ожидания</h3>
-                        <p class="news-date">20 октября 2025</p>
-                        <p class="news-summary">FromSoftware удалась самая амбициозная DLC-компания в истории. Премьеры DLC собрали более 3 миллионов зрителей онлайн, а предварительные заказы reach громадных цифр. "Shadow of the Erdtree" добавляет 20+ часов контента, новые механики, оружия, боссов и полностью новый регион в мире Элден. Критики уже ставят ему максимальные оценки.</p>
-                        <div class="news-full-content" style="display: none;">
-                            <p>Не ограничиваясь простым расширением, FromSoftware представляет совершенно новую главы в энциклопедии Промежутка. "Star of the Abyss" - так называется дополнение, которое даст игрокам доступ к:</p>
-                            <ul>
-                                <li>Новые подземные царства полные секретов</li>
-                                <li>Встречи с древними богами и существами невиданной мощи</li>
-                                <li>Арсенал неповторимого оружия с уникальными свойствами</li>
-                                <li>Новые заклинания и магию неизвестного происхождения</li>
-                            </ul>
-                            <p>Это будет не просто DLC, а полноценная история для каждого класса персонажа в уникальном повествовании.</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="news-card">
-                    <img src="images/game5.jpg" alt="News 3" class="news-image">
-                    <div class="news-content">
-                        <h3 class="news-title">God of War Ragnarok: патч 1.50 добавил нового персонажа</h3>
-                        <p class="news-date">15 октября 2025</p>
-                        <p class="news-summary">Santa Monica Studios продолжает поддерживать свою темновую жемчужину. В новом плане 1.50 появился не просто косметический контент, а полноценный новый персонаж - Атрей получает расширение своей роли в New Game+. Ветка альтернативных квестов, новых врагов и глубокий лор братьев Свенов. Это DLC по цене патча!</p>
-                        <div class="news-full-content" style="display: none;">
-                            <p>Патч 1.50 вводит совершенно новую игровую механику с Атреем как полноценным сокомандником. Теперь молодой охотник может:</p>
-                            <ul>
-                                <li>Самостоятельно принимать участие в боях</li>
-                                <li>Выбирать собственные квесты и миссии</li>
-                                <li>Взаимодействовать с мифическими существами</li>
-                                <li>Изучать древнюю историю норвежских богов</li>
-                            </ul>
-                            <p>Разработчики также анонсировали бесплатное DLC с альтернативными сюжетными линиями и новыми концовками в ближайшие месяцы.</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="news-card">
-                    <img src="images/game2.jpg" alt="News 4" class="news-image">
-                    <div class="news-content">
-                        <h3 class="news-title">The Witcher 3: Wild Hunt получит ремастер в 2026</h3>
-                        <p class="news-date">10 октября 2025</p>
-                        <p class="news-summary">После успеха серии Cyberpunk, CD Projekt RED возвращают взгляд к классике - The Witcher 3: Wild Hunt. Полный ремастер с улучшенной графикой, новыми квестами, переработанным саундтреком и полноценной локализацией карт. Игра 2015 года, которая будет выглядеть как игра 2025-го, - душевно, когда возвращаются к золотым хигам.</p>
-                        <div class="news-full-content" style="display: none;">
-                            <p>Ремастер обещает полностью переработанную графику в разрешении 4K, поддержку трассировки лучей и современные технологии RTX. Но и контент не оставлен без внимания:</p>
-                            <ul>
-                                <li>Совершенно новые побочные квесты</li>
-                                <li>Переработанная система карточной мини-игры</li>
-                                <li>Обновленные модели персонажей и монстров</li>
-                                <li>Улучшенный ИИ противников</li>
-                                <li>Полная локализация на все языки мира</li>
-                            </ul>
-                            <p>Легендарная RPG получит новую жизнь и привыкнет поколения новых фанатов к миру ведьмака.</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="news-card">
-                    <img src="images/game4.jpg" alt="News 5" class="news-image">
-                    <div class="news-content">
-                        <h3 class="news-title">Overwatch 2 обновляется: Новые герои и баланс в сезоне 12</h3>
-                        <p class="news-date">5 октября 2025</p>
-                        <p class="news-summary">Blizzard анонсировали масштабные изменения в Overwatch 2 с сезоном 12. Новые герои, переработка баланса старых персонажей, улучшенная система уровней и наконец-то долгожданный PVE режим Storm Rising становится бесплатным для всех игроков. Это один из самых амбициозных обновлений за всю историю игры.</p>
-                        <div class="news-full-content" style="display: none;">
-                            <p>Сезон 12 приносит революционные изменения для тайттфикс-мод игры:</p>
-                            <ul>
-                                <li>Два новых героя: женщина-танкист Lifeweaver и pivoting shooter Venture</li>
-                                <li>Полный баланс пас рефреш с улучшенными механиками старых персонажей</li>
-                                <li>Бесплатный доступ к кооперативному PVE режиму Storm Rising</li>
-                                <li>Улучшенная карта Eichenwalde с новой механикой</li>
-                                <li>Новые косметические предметы и пассивные эффекты</li>
-                            </ul>
-                            <p>Blizzard обещает, что фокус на балансе наконец-то остановит токсичное метат-ребалансирование и вернет игре fun-first подход.</p>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="news-card">
-                    <img src="images/game6.jpg" alt="News 6" class="news-image">
-                    <div class="news-content">
-                        <h3 class="news-title">Hogwarts Legacy: Hogwarts Mystery получат новый сезон</h3>
-                        <p class="news-date">1 октября 2025</p>
-                        <p class="news-summary">Avalanche Software порадовали фанатов Harry Potter мобильной игрой. В новом сезоне Hogwarts Mystery игроков ожидают: новый дом, 500+ новых диалогов, квесты на старение персонажа, механика взаимных отношений и даже возможность посетить Министерство Магии. Мобильная игра достигла 500 млн скачиваний за год работы.</p>
-                        <div class="news-full-content" style="display: none;">
-                            <p>Новый сезон "Year of the Phoenix" принесет совершенно новые возможности для мобильных ведьм и wizards:</p>
-                            <ul>
-                                <li>Посещение Министерства Магии и участие в важных событиях</li>
-                                <li>150+ минут озвученного диалога</li>
-                                <li>Новая механика возрастных квестов персонажа</li>
-                                <li>Романтические отношения с одноклассниками</li>
-                                <li>Сюжетные квесты с погодными эффектами</li>
-                            </ul>
-                            <p>Миллионы фанатов Potterverse продолжают наслаждаться магией Хогвартса на мобильных устройствах.</p>
-                        </div>
-                </article>
+            <div class="news-card" onclick="toggleNews(this)">
+                <div class="news-preview">
+                    <h3>Новый патч для The Legend of Zelda: Tears of the Kingdom</h3>
+                    <p>Nintendo выпустила крупное обновление для своей флагманской игры, добавляющее новые функции и исправляющее баги...</p>
+                </div>
+                <div class="news-full">
+                    <p>Nintendo выпустила крупное обновление для своей флагманской игры, добавляющее новые функции и исправляющее баги, о которых сообщали игроки.</p>
+                    <p>В обновлении 1.2.0 добавлено:</p>
+                    <ul>
+                        <li>Новые побочные квесты</li>
+                        <li>Улучшенная система крафтинга</li>
+                        <li>Дополнительные скины для оружия</li>
+                        <li>Оптимизация производительности</li>
+                        <li>Исправление 15 известных багов</li>
+                    </ul>
+                    <p>Игроки уже оценили обновление, особенно отмечая улучшение стабильности работы игры в плотно застроенных районах.</p>
+                </div>
+                <button class="expand-btn">Читать далее...</button>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>GameHub</h4>
-                <p>Мир видеоигр в вашем кармане</p>
-            </div>
-            <div class="footer-section">
-                <h4>Разработчик</h4>
-                <p>Насиров Мурад</p>
-                <p>Все права защищены &copy; 2025</p>
-            </div>
-            <div class="footer-section">
-                <h4>Контакты</h4>
-                <p>Email: info@gamehub.com</p>
-                <p>Телефон: +7 (495) 123-45-67</p>
-                <p>Facebook: @GameHubOfficial</p>
-                <p>Instagram: @gamehub_ru</p>
-            </div>
-        </div>
+    <footer>
+        <p>&copy; 2024 GameHub. Все права защищены.</p>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        function toggleNews(card) {
+            const isExpanded = card.classList.contains('expanded');
+            card.classList.toggle('expanded');
+            
+            const btn = card.querySelector('.expand-btn');
+            if (isExpanded) {
+                btn.textContent = 'Читать далее...';
+            } else {
+                btn.textContent = 'Свернуть';
+            }
+        }
+
+        document.querySelectorAll('.expand-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const card = this.closest('.news-card');
+                toggleNews(card);
+            });
+        });
+    </script>
+    <script src="nav.js"></script>
 </body>
 </html>

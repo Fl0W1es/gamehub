@@ -1434,6 +1434,134 @@ body {
     cursor: pointer;
 }
 
+/* News Section Styles */
+.news-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.news-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #8b5cf6;
+    font-size: 2rem;
+}
+
+/* News Card Styles */
+.news-card {
+    background: linear-gradient(135deg, rgba(45, 45, 70, 0.9), rgba(60, 60, 90, 0.7));
+    border-radius: 15px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+}
+
+.news-preview {
+    padding: 20px;
+}
+
+.news-preview h3 {
+    color: #d946ef;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.news-preview p {
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.news-full {
+    padding: 0 20px;
+    color: #e2e8f0;
+    line-height: 1.8;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.news-card.expanded .news-full {
+    max-height: 1000px;
+    padding-bottom: 20px;
+}
+
+.expand-btn {
+    width: 100%;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.4), rgba(217, 70, 239, 0.3));
+    color: #fff;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 0 0 15px 15px;
+}
+
+.expand-btn:hover {
+    background: linear-gradient(135deg, #8b5cf6, #d946ef);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.5), rgba(217, 70, 239, 0.4));
+    color: #fff;
+}
+
+.logo h1 {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #8b5cf6, #d946ef);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header {
+    background: linear-gradient(135deg, rgba(26, 26, 46, 0.98), rgba(45, 45, 70, 0.95));
+    padding: 1rem 0;
+}
+
+header nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+footer {
+    background: linear-gradient(135deg, rgba(20, 20, 40, 0.9), rgba(30, 30, 50, 0.8));
+    color: #cbd5e1;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
 /* Force GitHub Pages cache refresh */
 
 /* Responsive */
