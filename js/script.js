@@ -479,6 +479,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Force initial check
+    updateActiveNav();
+
     setTimeout(() => {
         updateActiveNav();
     }, 100);
