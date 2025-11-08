@@ -389,13 +389,9 @@ class GameCarousel {
         this.gameVideoContainer.style.opacity = '0';
 
         setTimeout(() => {
-            // Показывать статистическое изображение вместо видео из-за возможных ошибок загрузки
+            // Вставлять YouTube iframe плеер
             this.gameVideoContainer.innerHTML = `
-                <div class="video-placeholder">
-                    <img src="${this.games[this.currentIndex].image}" alt="${this.games[this.currentIndex].title} trailer" class="video-thumb">
-                    <p>Трейлер "${this.games[this.currentIndex].title}" будет доступен при просмотре онлайн.</p>
-                    <a href="${videoUrl.replace('embed/', 'watch?v=')}" target="_blank" class="video-link">Посмотреть на YouTube</a>
-                </div>
+                <iframe width="560" height="315" src="${videoUrl}" title="${this.games[this.currentIndex].title} Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             `;
 
             this.gameVideoContainer.style.transition = 'opacity 0.5s ease';
