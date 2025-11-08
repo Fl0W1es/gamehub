@@ -1,6 +1,6 @@
 // Navigation active states
 document.addEventListener('DOMContentLoaded', function() {
-    const navLinks = document.querySelectorAll('.nav-links a');
+    const navLinks = document.querySelectorAll('.nav a');
     const currentPath = window.location.pathname;
 
     function updateActiveNav() {
@@ -20,17 +20,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     link.classList.add('active');
                 }
             });
-        } else if (currentPath.includes('index.html') || currentPath === '/' || currentPath.endsWith('/')) {
+        } else {
+            // On index page - always highlight "Главная"
             navLinks.forEach(link => {
-                if (link.getAttribute('href') === 'index.html') {
+                if (link.getAttribute('href') === 'index.html' || link.getAttribute('href') === '#home') {
                     link.classList.add('active');
                 }
             });
         }
     }
 
+    // Force initial check
     updateActiveNav();
-
-    // Update on hash changes if needed
-    window.addEventListener('hashchange', updateActiveNav);
 });
