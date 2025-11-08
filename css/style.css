@@ -1419,6 +1419,23 @@ body {
     color: #d946ef;
 }
 
+/* News and Review Expandable Styles */
+.news-full-content, .review-full-content {
+    display: none;
+}
+
+.news-full-content.visible, .review-full-content.visible {
+    display: block;
+    margin-top: 15px;
+}
+
+/* Ensure cards have pointer cursor */
+.news-card, .review-card {
+    cursor: pointer;
+}
+
+/* Force GitHub Pages cache refresh */
+
 /* Responsive */
 @media (max-width: 768px) {
     .header-content {
